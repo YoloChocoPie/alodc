@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alodc", "alodc\alodc.csproj", "{8DAA45E9-3AC3-420A-AE76-D2C3B64CCC0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alodc.Tests", "alodc.Tests\alodc.Tests.csproj", "{A055D83B-68FB-47B3-AB54-B9A1906EF405}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DAA45E9-3AC3-420A-AE76-D2C3B64CCC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAA45E9-3AC3-420A-AE76-D2C3B64CCC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAA45E9-3AC3-420A-AE76-D2C3B64CCC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAA45E9-3AC3-420A-AE76-D2C3B64CCC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A055D83B-68FB-47B3-AB54-B9A1906EF405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A055D83B-68FB-47B3-AB54-B9A1906EF405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A055D83B-68FB-47B3-AB54-B9A1906EF405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A055D83B-68FB-47B3-AB54-B9A1906EF405}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7ED516F0-EB10-4A30-88FE-1F2752AF48FA}
+	EndGlobalSection
+EndGlobal
