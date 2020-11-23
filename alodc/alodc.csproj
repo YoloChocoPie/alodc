@@ -303,6 +303,7 @@
     <Content Include="Images\coca.jpg" />
     <Content Include="Images\com.jpg" />
     <Content Include="Images\comchientrung.jpg" />
+    <Content Include="Images\comga.jpg" />
     <Content Include="Images\comgakho.jpg" />
     <Content Include="Images\monnuoc.jpg" />
     <Content Include="Images\thucuong.jpg" />
@@ -2016,6 +2017,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\ProductAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
