@@ -44,6 +44,7 @@ namespace alodc.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var food = model.FOODs.FirstOrDefault(x => x.ID == id);
+            ViewBag.food_category = model.CATEGORies.OrderByDescending(x => x.ID).ToList();
             return View(food);
         }
         [HttpPost]

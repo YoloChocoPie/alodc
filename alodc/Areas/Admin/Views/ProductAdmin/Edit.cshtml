@@ -18,7 +18,7 @@
         
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FOOD_CODE, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FOOD_CODE, "Mã Món ăn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FOOD_CODE, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FOOD_CODE, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FOOD_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FOOD_NAME, " Tên Món ăn " ,htmlAttributes: new { @class = "control -label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FOOD_NAME, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FOOD_NAME, "", new { @class = "text-danger" })
@@ -34,15 +34,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CATEGORY_ID, "CATEGORY_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CATEGORY_ID, "Loại món ăn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CATEGORY_ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("CATEGORY_ID", new SelectList(ViewBag.food_category, "ID", "CATEGORY_NAME"))
                 @Html.ValidationMessageFor(model => model.CATEGORY_ID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DESCRIPTION, "Miêu tả", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
@@ -50,15 +50,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PRICE, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PRICE, "Giá", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
+                <div class="input-group-append">
+                    <span class="input-group-text">VNĐ</span>
+                </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IMAGE_URL, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IMAGE_URL, "Đường dẫn tới ảnh", htmlAttributes: new { @class = "control -label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IMAGE_URL, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IMAGE_URL, "", new { @class = "text-danger" })
@@ -66,7 +69,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.STATUS, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.STATUS, "Trạng thái ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.STATUS)

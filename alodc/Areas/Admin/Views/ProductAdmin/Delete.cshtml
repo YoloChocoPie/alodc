@@ -11,71 +11,74 @@
 <div>
     <h4>FOOD</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FOOD_CODE)
-        </dt>
+    <hr style="margin-left:200px" />
+    <dl class="dl-horizontal" style="margin-left:50px">
+        
+            <dt>
+                <label class="control-label col-md-2" for="FOOD_CODE" style="margin-left:-20px" >Mã món ăn</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FOOD_CODE)
-        </dd>
+            <dd style="margin-left:20px" >
+                @Html.DisplayFor(model => model.FOOD_CODE)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FOOD_NAME)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="FOOD_NAME" style="margin-left:-20px">Tên món ăn</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FOOD_NAME)
-        </dd>
+            <dd style="margin-left:20px">
+                @Html.DisplayFor(model => model.FOOD_NAME)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DESCRIPTION)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="DESCRIPTION" style="margin-left:-20px">Miêu tả</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DESCRIPTION)
-        </dd>
+            <dd style="margin-left:20px">
+                @Html.DisplayFor(model => model.DESCRIPTION)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PRICE)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="PRICE" style="margin-left:-20px">Giá</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PRICE)
-        </dd>
+            <dd style="margin-left:20px">
+                @Html.DisplayFor(model => model.PRICE)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IMAGE_URL)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="IMAGE_URL" style="margin-left:-20px">Ảnh minh hoạ</label>
+            </dt>
 
-        <dd>
-            <img src="@Model.IMAGE_URL" width="100px" />
-        </dd>
+            <dd style="margin-left:20px">
+                <img src="@Model.IMAGE_URL" width="100px" />
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.STATUS)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="STATUS" style="margin-left:-20px">Trạng thái</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.STATUS)
-        </dd>
+            <dd style="margin-left:20px">
+                @Html.DisplayFor(model => model.STATUS)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CATEGORY.CATEGORY_CODE)
-        </dt>
+            <dt>
+                <label class="control-label col-md-2" for="CATEGORY_CODE" style="margin-left:-20px">Mã loại</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CATEGORY.CATEGORY_CODE)
-        </dd>
+            <dd style="margin-left:20px">
+                @Html.DisplayFor(model => model.CATEGORY.CATEGORY_CODE)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color" style="margin-left:50px">
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
 </div>
