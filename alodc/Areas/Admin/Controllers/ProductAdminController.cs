@@ -5,10 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using alodc.Models;
+using WebCanteen.Areas.Admin.Middleware;
 
 namespace alodc.Areas.Admin.Controllers
 {
+    [LoginVerification]
     public class ProductAdminController : Controller
+
     {
         QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
         // GET: Admin/ProductAdmin

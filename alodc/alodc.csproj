@@ -172,7 +172,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
+    <Compile Include="Areas\Admin\Middleware\LoginVerification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -299,6 +302,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\7up.jpg" />
     <Content Include="Images\AdminLTELogo.png" />
+    <Content Include="Images\canteen-background.jpg" />
     <Content Include="Images\che.jpg" />
     <Content Include="Images\coca.jpg" />
     <Content Include="Images\com.jpg" />
@@ -2021,6 +2025,13 @@
     <Content Include="Areas\Admin\Views\ProductAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayoutCate.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -1,0 +1,54 @@
+﻿@model alodc.Models.CATEGORY
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutCate.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CATEGORY</h4>
+    <hr />
+    <hr style="margin-left:200px" />
+    <dl class="dl-horizontal" style="margin-left:50px">
+        <dt>
+            <label class="control-label col-md-2" for="CATEGORY_CODE" style="margin-left:-20px">Mã loại món ăn</label>
+        </dt>
+
+        <dd style="margin-left:20px">
+            @Html.DisplayFor(model => model.CATEGORY_CODE)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2" for="CATEGORY_NAME" style="margin-left:-20px">Mã loại món ăn</label>
+        </dt>
+
+        <dd style="margin-left:20px">
+            @Html.DisplayFor(model => model.CATEGORY_NAME)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2" for="IMAGE_URL" style="margin-left:-20px">Đường dẫn tới ảnh</label>
+        </dt>
+
+        <dd style="margin-left:20px">
+            <img src="@Model.IMAGE_URL" width="100px" />
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-2" for="STATUS" style="margin-left:-20px">Trạng thái</label>
+        </dt>
+
+        <dd style="margin-left:20px">
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div style="margin-left:20px">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</p>
