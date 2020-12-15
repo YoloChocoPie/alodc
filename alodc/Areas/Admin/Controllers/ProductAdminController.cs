@@ -27,21 +27,31 @@ namespace alodc.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(FOOD c)
         {
-            var food = new FOOD();
-            food.FOOD_CODE = c.FOOD_CODE;
-            food.FOOD_NAME = c.FOOD_NAME;
-            food.CATEGORY_ID = c.CATEGORY_ID;
-            food.DESCRIPTION = c.DESCRIPTION;
-            food.PRICE = c.PRICE;
-            food.IMAGE_URL = c.IMAGE_URL;
-            food.STATUS = c.STATUS;
-            
-            model.FOODs.Add(food);
-            model.SaveChanges();
-            Session["Success"] = true;
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var food = new FOOD();
+                food.FOOD_CODE = c.FOOD_CODE;
+                food.FOOD_NAME = c.FOOD_NAME;
+                food.CATEGORY_ID = c.CATEGORY_ID;
+                food.DESCRIPTION = c.DESCRIPTION;
+                food.PRICE = c.PRICE;
+                food.IMAGE_URL = c.IMAGE_URL;
+                food.STATUS = c.STATUS;
+
+
+                model.FOODs.Add(food);
+                model.SaveChanges();
+
+                Session["Success"] = true;
+                return RedirectToAction("Index");
+            }
+            return View();
+
+
+
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -51,28 +61,34 @@ namespace alodc.Areas.Admin.Controllers
             return View(food);
         }
         [HttpPost]
-
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id,FOOD c)
         {
             // Get the original record to edit from the database.
-            var food = model.FOODs.FirstOrDefault(x => x.ID == id);
-            food.FOOD_CODE = c.FOOD_CODE;
-            food.FOOD_NAME = c.FOOD_NAME;
-            food.CATEGORY_ID = c.CATEGORY_ID;
-            food.DESCRIPTION = c.DESCRIPTION;
-            food.PRICE = c.PRICE;
-            food.IMAGE_URL = c.IMAGE_URL;
-            food.STATUS = c.STATUS;
+            if (ModelState.IsValid)
+            {
+                var food = model.FOODs.FirstOrDefault(x => x.ID == id);
+                food.FOOD_CODE = c.FOOD_CODE;
+                food.FOOD_NAME = c.FOOD_NAME;
+                food.CATEGORY_ID = c.CATEGORY_ID;
+                food.DESCRIPTION = c.DESCRIPTION;
+                food.PRICE = c.PRICE;
+                food.IMAGE_URL = c.IMAGE_URL;
+                food.STATUS = c.STATUS;
 
 
 
-            
-            model.SaveChanges();
-            return RedirectToAction("Index");
+
+                model.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
+
 
             // This will attempt to do the model binding and map all the submitted 
             // properties to the attached entity.
-     
+
         }
 /*        public ActionResult Edit( FOOD c)
         {
@@ -85,6 +101,7 @@ namespace alodc.Areas.Admin.Controllers
             return View(food);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [ActionName("Delete")]
         public ActionResult ComfirmDelete(int id)
         {

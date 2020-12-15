@@ -27,17 +27,25 @@ namespace alodc.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CATEGORY c)
         {
-            var category = new CATEGORY();
-            category.CATEGORY_CODE = c.CATEGORY_CODE;
-            category.CATEGORY_NAME = c.CATEGORY_NAME;
-            category.IMAGE_URL = c.IMAGE_URL;
-            category.STATUS = c.STATUS;
-            model.CATEGORies.Add(category);
-            model.SaveChanges();
-            Session["Success"] = true;
-            return RedirectToAction("Index");
+            if (ModelState.IsValid) 
+            {
+                var category = new CATEGORY();
+                category.CATEGORY_CODE = c.CATEGORY_CODE;
+                category.CATEGORY_NAME = c.CATEGORY_NAME;
+                category.IMAGE_URL = c.IMAGE_URL;
+                category.STATUS = c.STATUS;
+
+                model.CATEGORies.Add(category);
+                model.SaveChanges();
+
+                Session["Success"] = true;
+                return RedirectToAction("Index");
+            }
+            return View();
+                
         }
         [HttpGet]
         public ActionResult Edit(int id)
@@ -46,15 +54,21 @@ namespace alodc.Areas.Admin.Controllers
             return View(category);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CATEGORY c)
         {
-            var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
-            category.CATEGORY_CODE = c.CATEGORY_CODE;
-            category.CATEGORY_NAME = c.CATEGORY_NAME;
-            category.IMAGE_URL = c.IMAGE_URL;
-            category.STATUS = c.STATUS;
-            model.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid) 
+            {
+                var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
+                category.CATEGORY_CODE = c.CATEGORY_CODE;
+                category.CATEGORY_NAME = c.CATEGORY_NAME;
+                category.IMAGE_URL = c.IMAGE_URL;
+                category.STATUS = c.STATUS;
+                model.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+                
         }
         [HttpGet]
         public ActionResult Delete(int id)
