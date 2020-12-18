@@ -23,7 +23,7 @@ namespace alodc.Models
         
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Please enter FoodCode")]
+        
         [MaxLength(30, ErrorMessage = "Độ dài tối đa 30 ký tự")]
         [MinLength(3, ErrorMessage = "Độ dài ít nhất 3 ký tự")]
 
@@ -40,7 +40,7 @@ namespace alodc.Models
         [MinLength(3, ErrorMessage = "Độ dài ít nhất 3 ký tự")]
         public string DESCRIPTION { get; set; }
         public int PRICE { get; set; }
-        [Required(ErrorMessage = "Please enter URL")]
+    
         public string IMAGE_URL { get; set; }
         public bool STATUS { get; set; }
     
