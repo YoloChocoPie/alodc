@@ -57,30 +57,40 @@ namespace alodc.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var food = model.FOODs.FirstOrDefault(x => x.ID == id);
+            /*var food = model.FOODs.FirstOrDefault(x => x.ID == id);
+            ViewBag.food_category = model.CATEGORies.OrderByDescending(x => x.ID).ToList();
+            return View(food);*/
+
+            FOOD food = model.FOODs.Find(id);
+            if(food == null)
+            {
+                return HttpNotFound();
+            }
             ViewBag.food_category = model.CATEGORies.OrderByDescending(x => x.ID).ToList();
             return View(food);
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id,FOOD c)
+        public ActionResult Edit([Bind(Include = "FOOD_CODE,FOOD_NAME,CATEGORY_ID,DESCRIPTION,PRICE,IMAGE_URL,STATUS")]
+                        FOOD food, int id)
         {
-            // Get the original record to edit from the database.
             if (ModelState.IsValid)
             {
-                var food = model.FOODs.FirstOrDefault(x => x.ID == id);
-                food.FOOD_CODE = c.FOOD_CODE;
-                food.FOOD_NAME = c.FOOD_NAME;
-                food.CATEGORY_ID = c.CATEGORY_ID;
-                food.DESCRIPTION = c.DESCRIPTION;
-                food.PRICE = c.PRICE;
-                food.IMAGE_URL = c.IMAGE_URL;
-                food.STATUS = c.STATUS;
 
+                var c = model.FOODs.FirstOrDefault(x => x.ID == id);
+                c.FOOD_CODE = food.FOOD_CODE;
+                c.FOOD_NAME = food.FOOD_NAME;
+                c.CATEGORY_ID = food.CATEGORY_ID;
+                c.DESCRIPTION = food.DESCRIPTION;
+                c.PRICE = food.PRICE;
+                c.IMAGE_URL = food.IMAGE_URL;
+                c.STATUS = food.STATUS;
 
-
-
+                
                 model.SaveChanges();
+
+                Session["Success"] = true;
                 return RedirectToAction("Index");
             }
             return View();
@@ -91,10 +101,10 @@ namespace alodc.Areas.Admin.Controllers
             // properties to the attached entity.
 
         }
-/*        public ActionResult Edit( FOOD c)
-        {
-            
-        }*/
+        /*        public ActionResult Edit( FOOD c)
+                {
+
+                }*/
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -113,17 +123,19 @@ namespace alodc.Areas.Admin.Controllers
         }
 
         // GET: Products/Details/5
-        [AllowAnonymous]
-        public ActionResult Details(int id)
-        {
+        /* [AllowAnonymous]
+         public ActionResult Details(int id)
+         {
 
-            var food = model.FOODs.FirstOrDefault(x => x.ID == id);
-            if (model == null)
-            {
-                return HttpNotFound();
-            }
-            return View(food);
-        }
+             var food = model.FOODs.FirstOrDefault(x => x.ID == id);
+             if (model == null)
+             {
+                 return HttpNotFound();
+             }
+             return View(food);
+         }*/
+
+
     }
 }
     
