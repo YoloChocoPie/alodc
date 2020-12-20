@@ -4,77 +4,194 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutCate.cshtml";
 }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
 
-<h2>Manage Categories</h2>
 
-<div class="card">
-    <div class="card-header border-transparent">
-        <h3 class="card-title">Latest Orders</h3>
 
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <!--THIS IS THE CSS FILE YOU WILL NEED -->
+    <link rel="stylesheet" type="text/css" href="~/test datatable/css/dataTables.bootstrap.css">
+
+
+</head>
+<body>
+    <h2>Manage Categories</h2>
+
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Latest Orders</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body p-0">
-        <div class="table-responsive">
-            <table class="table m-0" id="mySearchableData">
-                <thead>
-                    <tr>
-                        <th>
-                            Mã loại món ăn
-                        </th>
-                        <th>
-                            Tên loại món ăn
-                        </th>
-                        <th>
-                            Ảnh minh hoạ
-                        </th>
-                        <th>
-                            Trạng thái
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0" id="mySearchableData">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mã loại món ăn
+                            </th>
+                            <th>
+                                Tên loại món ăn
+                            </th>
+                            <th>
+                                Ảnh minh hoạ
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CATEGORY_CODE)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CATEGORY_NAME)
-                        </td>
-                        <td>
-                            <img src="@item.IMAGE_URL" width="100px" />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.STATUS)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                           @* @Html.ActionLink("Details", "Details", new { id = item.ID })*@ |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CATEGORY_CODE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CATEGORY_NAME)
+                            </td>
+                            <td>
+                                <img src="@item.IMAGE_URL" width="100px" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STATUS)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @* @Html.ActionLink("Details", "Details", new { id = item.ID })*@ |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
 
-            </table>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
         </div>
-        <!-- /.table-responsive -->
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <a href="/Admin/CategoriesAdmin/Create" class="btn btn-sm btn-info float-left">Create New Category</a>
+        </div>
+        <!-- /.card-footer -->
     </div>
-    <!-- /.card-body -->
-    <div class="card-footer clearfix">
-        <a href="/Admin/CategoriesAdmin/Create" class="btn btn-sm btn-info float-left">Create New Category</a>
-    </div>
-    <!-- /.card-footer -->
-</div>
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<!-- EVERYTHING BELOW THIS YOU WILL NEED -->
+<script type="text/javascript" language="javascript" src="~/test datatable/js/jquery.dataTables.js">
+</script>
+
+
+
+<!--searchable table start -->
+<script type="text/javascript" language="javascript" class="init">
+    //	$('#mydata').dataTable();
+    $(document).ready(function () {
+        $('#mySearchableData').DataTable();
+    });
+</script>
+<!--searchable table END -->
+
+<script>
+
+    $(document).ready(function () {
+        $('#filterOptions li').click(function () {
+            // fetch the class of the clicked item
+            var ourClass = $(this).attr('class');
+
+            // reset the active class on all the buttons
+            $('#filterOptions li').removeClass('active');
+            // update the active state on our clicked button
+            $(this).parent().addClass('active');
+
+            if (ourClass == 'all') {
+                // show all our items
+                $('#ourHolder').children('div').show();
+            }
+            else {
+                // hide all elements that don't share ourClass
+                $('#ourHolder').children('div:not(.' + ourClass + ')').hide();
+                // show all elements that do share ourClass
+                $('#ourHolder').children('div.' + ourClass).show();
+            }
+            return false;
+        });
+    });
+
+
+
+
+    function validateForm() {
+        formObj = document.login;
+        if (formObj.eml.value == "") {
+            alert("You have not filled in the User Name field.");
+            formObj.eml.focus();
+            return false;
+        }
+        else if (formObj.pwd.value == "") {
+            alert("You have not filled in the Password field.");
+            formObj.pwd.focus();
+            return false;
+        }
+        formObj.btnLogin.innerHTML = 'Wait..';
+        formObj.btnLogin.disabled = true;
+    }
+
+
+    function Iforgot() {
+        str = "lg.pw.php?eml=" + login.eml.value;
+        document.location = str;
+    }
+
+
+
+    function FilterClear() {
+        ShipmentFilter.txtRefOt.value = "";
+        ShipmentFilter.ddStatus.value = null;
+        ShipmentFilter.ddMode.value = null;
+        ShipmentFilter.ddCountryOrig.value = null;
+        ShipmentFilter.ddCountryDest.value = null;
+        ShipmentFilter.txtCityOrig.value = "";
+        ShipmentFilter.txtCityDest.value = "";
+        ShipmentFilter.txtPortLoad.value = "";
+        ShipmentFilter.txtPortDischarge.value = "";
+        ShipmentFilter.txtClient.value = null;
+        ShipmentFilter.txtShipper.value = null;
+        ShipmentFilter.txtConsignee.value = null;
+
+    }
+
+
+    function FilterReset() {
+        FilterClear();
+        ShipmentFilter.ddStatus.value = 99;
+    }
 
