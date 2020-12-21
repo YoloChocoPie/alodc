@@ -1,4 +1,4 @@
-﻿@model IEnumerable<alodc.Models.CATEGORY>
+﻿@model IEnumerable<alodc.Models.ORDER>
 
 @{
     ViewBag.Title = "Index";
@@ -21,19 +21,21 @@
 
 </head>
 <body>
-    <h2>Manage Categories</h2>
 
+
+    <h2>Manage Bill</h2>
+
+
+    @*<table class="table">*@
     <div class="card">
         <div class="card-header border-transparent">
-            <h3 class="card-title">/Category/Index</h3>
+            <h3 class="card-title">/Bill/Index</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                 </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                </button>
+
             </div>
         </div>
         <!-- /.card-header -->
@@ -43,16 +45,22 @@
                     <thead>
                         <tr>
                             <th>
-                                Mã loại món ăn
+                                Mã hoá đơn
                             </th>
                             <th>
-                                Tên loại món ăn
-                            </th>
-                            <th>
-                                Ảnh minh hoạ
+                                Thời gian
                             </th>
                             <th>
                                 Trạng thái
+                            </th>
+                            <th>
+                                Phản hồi
+                            </th>
+                            <th>
+                                EMAIL ADMIN
+                            </th>
+                            <th>
+                                EMAIL KHÁCH HÀNG
                             </th>
                             <th></th>
                         </tr>
@@ -63,40 +71,45 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CATEGORY_CODE)
+                                @Html.DisplayFor(modelItem => item.ORDER_CODE)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CATEGORY_NAME)
-                            </td>
-                            <td>
-                                <img src="@item.IMAGE_URL" width="100px" />
+                                @Html.DisplayFor(modelItem => item.DATE)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.STATUS)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.FEEDBACK)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ACCOUNT.EMAIL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CUSTOMER.EMAIL)
+                            </td>
+                            <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                @* @Html.ActionLink("Details", "Details", new { id = item.ID })*@ |
+                                @*   @Html.ActionLink("Details", "Details", new { id=item.ID })*@ |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                             </td>
                         </tr>
                     }
-
                 </table>
             </div>
             <!-- /.table-responsive -->
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-            <a href="/Admin/CategoriesAdmin/Create" class="btn btn-sm btn-info float-left">Create New Category</a>
+
+            <a href="/Admin/Bill/Create" class="btn btn-sm btn-info float-left">Place New Order</a>
+
         </div>
         <!-- /.card-footer -->
     </div>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -122,76 +135,80 @@
 
 <script>
 
-    $(document).ready(function () {
-        $('#filterOptions li').click(function () {
-            // fetch the class of the clicked item
-            var ourClass = $(this).attr('class');
+    $(document).ready(function() {
+    $('#filterOptions li').click(function() {
+      // fetch the class of the clicked item
+      var ourClass = $(this).attr('class');
 
-            // reset the active class on all the buttons
-            $('#filterOptions li').removeClass('active');
-            // update the active state on our clicked button
-            $(this).parent().addClass('active');
+      // reset the active class on all the buttons
+      $('#filterOptions li').removeClass('active');
+      // update the active state on our clicked button
+      $(this).parent().addClass('active');
 
-            if (ourClass == 'all') {
-                // show all our items
-                $('#ourHolder').children('div').show();
-            }
-            else {
-                // hide all elements that don't share ourClass
-                $('#ourHolder').children('div:not(.' + ourClass + ')').hide();
-                // show all elements that do share ourClass
-                $('#ourHolder').children('div.' + ourClass).show();
-            }
-            return false;
-        });
+      if(ourClass == 'all') {
+        // show all our items
+        $('#ourHolder').children('div').show();
+      }
+      else {
+        // hide all elements that don't share ourClass
+        $('#ourHolder').children('div:not(.' + ourClass + ')').hide();
+        // show all elements that do share ourClass
+        $('#ourHolder').children('div.' + ourClass).show();
+      }
+      return false;
     });
+  });
 
 
 
 
-    function validateForm() {
-        formObj = document.login;
-        if (formObj.eml.value == "") {
-            alert("You have not filled in the User Name field.");
-            formObj.eml.focus();
-            return false;
-        }
-        else if (formObj.pwd.value == "") {
-            alert("You have not filled in the Password field.");
-            formObj.pwd.focus();
-            return false;
-        }
-        formObj.btnLogin.innerHTML = 'Wait..';
-        formObj.btnLogin.disabled = true;
-    }
+  function validateForm()
+  {
+  formObj = document.login;
+      if (formObj.eml.value == "") {
+      alert("You have not filled in the User Name field.");
+  formObj.eml.focus();
+      return false;
+      }
+      else if (formObj.pwd.value == "") {
+      alert("You have not filled in the Password field.");
+  formObj.pwd.focus();
+      return false;
+      }
+  formObj.btnLogin.innerHTML='Wait..';
+  formObj.btnLogin.disabled=true;
+  }
 
 
-    function Iforgot() {
-        str = "lg.pw.php?eml=" + login.eml.value;
-        document.location = str;
-    }
+  function Iforgot()
+  {
+  str = "lg.pw.php?eml=" + login.eml.value;
+  document.location=str;
+  }
 
 
 
-    function FilterClear() {
-        ShipmentFilter.txtRefOt.value = "";
-        ShipmentFilter.ddStatus.value = null;
-        ShipmentFilter.ddMode.value = null;
-        ShipmentFilter.ddCountryOrig.value = null;
-        ShipmentFilter.ddCountryDest.value = null;
-        ShipmentFilter.txtCityOrig.value = "";
-        ShipmentFilter.txtCityDest.value = "";
-        ShipmentFilter.txtPortLoad.value = "";
-        ShipmentFilter.txtPortDischarge.value = "";
-        ShipmentFilter.txtClient.value = null;
-        ShipmentFilter.txtShipper.value = null;
-        ShipmentFilter.txtConsignee.value = null;
+  function FilterClear() {
+  ShipmentFilter.txtRefOt.value="";
+  ShipmentFilter.ddStatus.value=null;
+  ShipmentFilter.ddMode.value=null;
+  ShipmentFilter.ddCountryOrig.value=null;
+  ShipmentFilter.ddCountryDest.value=null;
+  ShipmentFilter.txtCityOrig.value="";
+  ShipmentFilter.txtCityDest.value="";
+  ShipmentFilter.txtPortLoad.value="";
+  ShipmentFilter.txtPortDischarge.value="";
+  ShipmentFilter.txtClient.value=null;
+  ShipmentFilter.txtShipper.value=null;
+  ShipmentFilter.txtConsignee.value=null;
 
-    }
+  }
 
 
-    function FilterReset() {
-        FilterClear();
-        ShipmentFilter.ddStatus.value = 99;
-    }
+  function FilterReset() {
+  FilterClear();
+  ShipmentFilter.ddStatus.value=99;
+  }
 
+
+@*</table>*@

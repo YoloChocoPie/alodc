@@ -23,7 +23,7 @@ namespace alodc.Models
     
         public int ID { get; set; }
         public string ORDER_CODE { get; set; }
-        public System.DateTime DATE { get; set; }
+        public Nullable<System.DateTime> DATE { get; set; }
         public Nullable<int> ACCOUNT_ID { get; set; }
         public int CUSTOMER_ID { get; set; }
         public int STATUS { get; set; }
