@@ -176,7 +176,6 @@
     <Compile Include="Areas\Admin\Controllers\BillController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAdmin1Controller.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\Admin\Middleware\LoginVerification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2220,8 +2219,6 @@
           <DevelopmentServerPort>52758</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44351/</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>https://localhost:44351/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
