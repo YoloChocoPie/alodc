@@ -22,6 +22,7 @@ namespace alodc.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+
             ViewBag.account_id = model.ACCOUNTs.OrderByDescending(x => x.ID).ToList();
             ViewBag.customer_id = model.CUSTOMERs.OrderByDescending(x => x.ID).ToList();
             return View();
@@ -47,8 +48,11 @@ namespace alodc.Areas.Admin.Controllers
                 model.SaveChanges();
 
                 Session["Success"] = true;
+               
                 return RedirectToAction("Index");
             }
+            ViewBag.account_id = model.ACCOUNTs.OrderByDescending(x => x.ID).ToList();
+            ViewBag.customer_id = model.CUSTOMERs.OrderByDescending(x => x.ID).ToList();
             return View();
 
 
@@ -113,8 +117,15 @@ namespace alodc.Areas.Admin.Controllers
                 model.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.account_id = model.ACCOUNTs.OrderByDescending(x => x.ID).ToList();
+            ViewBag.customer_id = model.CUSTOMERs.OrderByDescending(x => x.ID).ToList();
             return View();
 
+        }
+        public ActionResult Print(int id)
+        {
+            var printData = model.ORDERs.FirstOrDefault(x => x.ID == id);
+            return View(printData);
         }
     }
 }

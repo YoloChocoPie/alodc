@@ -10,7 +10,7 @@ using WebCanteen.Areas.Admin.Middleware;
 namespace alodc.Areas.Admin.Controllers
 {
     [LoginVerification]
-    public class ProductAdminController : Controller
+    public class ProductAdmin1Controller : Controller
 
     {
         QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();

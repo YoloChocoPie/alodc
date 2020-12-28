@@ -1,0 +1,114 @@
+﻿@model alodc.Models.ORDER
+@{
+    Layout = null;
+    int i = 1;
+    int total = 0;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DotNetTec - Invoice html template bootstrap</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="clearfix">
+        <div id="logo">
+            <img src="~/Images/logovanlang.png" />
+        </div>
+        <div id="company">
+            <h2 class="name">TRƯỜNG ĐẠI HỌC VĂN LANG</h2>
+            <div>69/68 Đặng Thùy Trâm, P. 13, Q. Bình Thạnh, TP. HCM</div>
+            <div>028. 71099240</div>
+            <div><a href="mailto:k.cntt@vanlanguni.edu.vn">k.cntt@vanlanguni.edu.vn</a></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <div id="details" class="clearfix">
+                        <div id="client">
+                            <div class="to">@Model.ORDER_CODE</div>
+                            <h2 class="name">@Model.CUSTOMER.FULL_NAME</h2>
+                            <div class="phone">@Model.CUSTOMER.PHONE_NUMBER</div>
+                        </div>
+                        <div id="invoice">
+                            <h1>HÓA ĐƠN MUA HÀNG</h1>
+                            <div class="date">Ngày lập:@Model.DATE.ToShortDateString()</div>
+                            <div class="date">
+                                <span class="float-right"> <strong>Trạng thái:</strong> Hoàn tất</span>
+                            </div>
+                        </div>
+                        <div class="table-responsive-sm">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <tr>
+                                        <th class="no">#</th>
+                                        <th class="desc">Đơn hàng</th>
+                                        <th class="unit">Giá</th>
+                                        <th class="qty">Số lượng (@Model.ORDER_DETAIL.Select(x => x.QUANTITY).Sum())</th>
+                                        <th class="total">Tổng cộng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var orderDetail in Model.ORDER_DETAIL)
+                                    {
+                                        total += (orderDetail.QUANTITY * orderDetail.PRICE);
+                                        <tr>
+                                            <td class="no">@i</td>
+                                            <td class="desc">@orderDetail.MENU.FOOD.FOOD_NAME</td>
+                                            <td class="unit">@string.Format("{0:#,#.}", orderDetail.PRICE)</td>
+                                            <td class="qty">@string.Format("{0:#,#.}", orderDetail.QUANTITY)</td>
+                                            <td class="total">@string.Format("{0:#,#.}", (orderDetail.QUANTITY) * orderDetail.PRICE)</td>
+
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-5">
+
+                            </div>
+
+                            <div class="col-lg-4 col-sm-5 ml-auto">
+                                <table class="table table-clear">
+                                    <tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3"></td>
+                                            <td colspan="3">Thành tiền</td>
+                                            <td>@string.Format("{0:#,#.}", total) VNĐ</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div id="invoice">Cảm ơn!</div>
+                                <div id="notices"> 
+                                    <div>Lưu ý:</div>
+                                    <div class="notice">Hàng mua rồi không trả lại.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Sở hữu thuộc Trường Đại học Văn Lang. <button onclick="window.print()" class="btn btn-primary">Print</button>
+    </footer>
+</body>
+</html>

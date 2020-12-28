@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ACCOUNT_ID, "ACCOUNT_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ACCOUNT_ID", new SelectList(ViewBag.account_id, "ID", "ID"))
+                @Html.DropDownList("ACCOUNT_ID", new SelectList(ViewBag.account_id, "ID", "FULL_NAME"))
                 @Html.ValidationMessageFor(model => model.ACCOUNT_ID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CUSTOMER_ID, "CUSTOMER_ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CUSTOMER_ID", new SelectList(ViewBag.customer_id, "ID", "ID"))
+                @Html.DropDownList("CUSTOMER_ID", new SelectList(ViewBag.customer_id, "ID", "FULL_NAME"))
                 @Html.ValidationMessageFor(model => model.CUSTOMER_ID, "", new { @class = "text-danger" })
             </div>
         </div>
