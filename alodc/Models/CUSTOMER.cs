@@ -11,15 +11,18 @@ namespace alodc.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class CUSTOMER
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUSTOMER()
-        {
-            this.ORDERs = new HashSet<ORDER>();
-        }
-    
+
+        [Key, Column(Order = 1)]
+
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+
         public int ID { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
@@ -28,7 +31,9 @@ namespace alodc.Models
         public bool STATUS { get; set; }
         public int CUSTOMER_TYPE { get; set; }
         public int FACULTY_ID { get; set; }
-    
+
+ 
+
         public virtual FACULTY FACULTY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ORDER> ORDERs { get; set; }

@@ -37,5 +37,7 @@ namespace alodc.Models
         public virtual DbSet<ORDER> ORDERs { get; set; }
         public virtual DbSet<ORDER_DETAIL> ORDER_DETAIL { get; set; }
         public virtual DbSet<SLIDER> SLIDERs { get; set; }
+
+       
     }
 }

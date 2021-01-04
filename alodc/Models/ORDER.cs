@@ -11,9 +11,7 @@ namespace alodc.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
-
+    
     public partial class ORDER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,21 +20,12 @@ namespace alodc.Models
             this.NOTIFICATIONs = new HashSet<NOTIFICATION>();
             this.ORDER_DETAIL = new HashSet<ORDER_DETAIL>();
         }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+    
         public int ID { get; set; }
         public string ORDER_CODE { get; set; }
-        public DateTime DATE { get; set; }
-      
-   
-
-        public int ACCOUNT_ID { get; set; }
-
-     
-
+        public System.DateTime DATE { get; set; }
+        public Nullable<int> ACCOUNT_ID { get; set; }
         public int CUSTOMER_ID { get; set; }
-
-
         public int STATUS { get; set; }
         public string FEEDBACK { get; set; }
     

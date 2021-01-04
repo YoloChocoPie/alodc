@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using alodc.Models;
 
+
 namespace alodc.Areas.Admin.Controllers
 {
     public class AuthController : Controller
     {
+       
+        
         QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
         // GET: Admin/Auth
         public ActionResult Login()
