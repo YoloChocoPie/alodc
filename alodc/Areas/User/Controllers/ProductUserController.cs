@@ -39,6 +39,20 @@ namespace alodc.Areas.User.Controllers
 
 
         }
+        public ActionResult About()
+
+        {
+            return View();
+
+
+        }
+        public ActionResult Faq()
+
+        {
+            return View();
+
+
+        }
 
 
         //GET: Register
@@ -87,37 +101,37 @@ namespace alodc.Areas.User.Controllers
 
         // Ở TRÊN LẦ ĐĂNG NHẬP, THÌ ĐĂNG NHẬP CHỈ CẦN EMAIL VÀ PASS THÔI, RIGHT?
 
- /*       public ActionResult Login()
-        {
+        /*       public ActionResult Login()
+               {
 
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+                   return View();
+               }
+               [HttpPost]
+               [ValidateAntiForgeryToken]
 
-        public ActionResult Login(string email, string password)
-        {
-            if (ModelState.IsValid)
-            {
+               public ActionResult Login(string email, string password)
+               {
+                   if (ModelState.IsValid)
+                   {
 
-                var f_password = GetMD5(password);
-                var data = model.CUSTOMERs.Where(s => s.EMAIL.Equals(email) && s.PASSWORD.Equals(f_password)).ToList();
-                if (data.Count() > 0)
-                {
-                    //add session
-                    Session["FullName"] = data.FirstOrDefault().FULL_NAME;
-                    Session["Email"] = data.FirstOrDefault().EMAIL;
-                    Session["idUser"] = data.FirstOrDefault().ID;
-                    return RedirectToAction("Index2");
-                }
-                else
-                {
-                    ViewBag.error = "Login failed"; 
-                    return RedirectToAction("Login");
-                }
-            }
-            return View();
-        }*/
+                       var f_password = GetMD5(password);
+                       var data = model.CUSTOMERs.Where(s => s.EMAIL.Equals(email) && s.PASSWORD.Equals(f_password)).ToList();
+                       if (data.Count() > 0)
+                       {
+                           //add session
+                           Session["FullName"] = data.FirstOrDefault().FULL_NAME;
+                           Session["Email"] = data.FirstOrDefault().EMAIL;
+                           Session["idUser"] = data.FirstOrDefault().ID;
+                           return RedirectToAction("Index2");
+                       }
+                       else
+                       {
+                           ViewBag.error = "Login failed"; 
+                           return RedirectToAction("Login");
+                       }
+                   }
+                   return View();
+               }*/
 
 
         // DƯỚI NÀY LÀ ĐĂNG KÍ
