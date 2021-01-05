@@ -31,7 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href=@Url.Content("~/everything/css/popuo-box.css") rel="stylesheet" type="text/css" media="all" />
 	<!--//pop-up-box-->
 	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+	<link rel="stylesheet" type="text/css" href=@Url.Content("~/everything/css/jquery-ui1.css")>
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 </head>
@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.html">
+					<a href="@Url.Action("Index2","ProductUser")">
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="images/logo2.png" alt=" ">
@@ -59,50 +59,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-8 header">
 
                 <div class="card-body">
-                    @if (Session["user-fullname"] != null)
-                    {
-                        <p>Name: @Session["user-fullname"].ToString()</p>
-
-                        <a href="~/User/Auth/Logout" class="btn btn-warning">Logout</a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("Login","Auth")">
-                            <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In
-                        </a>
-                        <a href="@Url.Action("CreateUserAccount","ProductUser")">
-                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up
-                        </a>
-                    }
-                    <!-- header lists -->
-                    <!--<ul>
-                        <li>
-                            <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-                                <span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#myModal1">
-                                <span class="fa fa-truck" aria-hidden="true"></span>Track Order
-                            </a>
-                        </li>
+                    <ul>
+                        @*                        <li>
+            <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
+                <span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator
+            </a>
+        </li>
+        <li>
+            <a href="#" data-toggle="modal" data-target="#myModal1">
+                <span class="fa fa-truck" aria-hidden="true"></span>Track Order
+            </a>
+        </li>*@
                         <li>
                             <span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
                         </li>
 
+                  @*      ĐÃ CHỈNH SỬA CHO HỢP LÝ GIAO DIỆN HEADER*@
 
+                        @if (Session["user-fullname"] != null)
+                        {
+                            <li>
+                                <p>Welcome: @Session["user-fullname"].ToString()</p>
+                            <li>
+                                <a href="~/User/Auth/Logout" class="btn btn-warning">Logout</a>
+                            </li>
 
+                            </li>
 
+                        }
+                        else
 
+                        {
+                            <li>
+                                <a href="@Url.Action("Login", "Auth")">
 
-                        <li>
+                                    <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In
+                                </a>
+                            </li>
 
-                        </li>
-                        <li>
+                            <li>
+                                <a href="@Url.Action("CreateUserAccount","ProductUser")">
+                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up
+                                </a>
+                            </li>
 
+                        }
 
-                        </li>
-                    </ul>-->
+                    </ul>
+                    
+                    <!-- header lists -->
+
 
 
                 </div>
