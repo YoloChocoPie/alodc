@@ -281,17 +281,17 @@ namespace alodc.Areas.User.Controllers
         }
 
         // GET: Products/Details/5
-        /* [AllowAnonymous]
-         public ActionResult Details(int id)
-         {
+        [AllowAnonymous]
+        public ActionResult Details(int id)
+        {
 
-             var food = model.FOODs.FirstOrDefault(x => x.ID == id);
-             if (model == null)
-             {
-                 return HttpNotFound();
-             }
-             return View(food);
-         }*/
+            var food = model.FOODs.Find(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            return View(food);
+        }
 
 
         //create a string MD5
