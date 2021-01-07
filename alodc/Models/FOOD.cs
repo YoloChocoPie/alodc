@@ -17,7 +17,7 @@ namespace alodc.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FOOD()
         {
-            this.MENUs = new HashSet<MENU>();
+            this.ORDER_DETAIL = new HashSet<ORDER_DETAIL>();
         }
     
         public int ID { get; set; }
@@ -29,8 +29,8 @@ namespace alodc.Models
         public string IMAGE_URL { get; set; }
         public bool STATUS { get; set; }
     
-        public virtual CATEGORY CATEGORY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU> MENUs { get; set; }
+        public virtual ICollection<ORDER_DETAIL> ORDER_DETAIL { get; set; }
+        public virtual CATEGORY CATEGORY { get; set; }
     }
 }

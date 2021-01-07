@@ -12,7 +12,7 @@ namespace alodc.Areas.Admin.Controllers
     {
        
         
-        QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
+        AD1TEAM1 model = new AD1TEAM1();
         // GET: Admin/Auth
         public ActionResult Login()
         {

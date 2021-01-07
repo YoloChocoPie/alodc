@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<alodc.Models.FOOD>
+
 @{
-    ViewBag.Title = "Index2";
+    ViewBag.Title = "Search1";
     Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
 }
 
-<!-- //navigation -->
-
-
-<!-- banner -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators-->
     <ol class="carousel-indicators">
@@ -87,10 +84,9 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<!-- //banner -->
 
 
-<!-- top Products -->
+
 <div class="ads-grid">
     <div class="container">
         <!-- tittle heading -->
@@ -105,13 +101,13 @@
         <!-- //tittle heading -->
         <!-- product left -->
         <div class="side-bar col-md-3">
-           @* <div class="search-hotel">
+            <div class="search-hotel">
                 <h3 class="agileits-sear-head">Search Here..</h3>
                 <form action="@Url.Action("Search","ProductUser")" method="post">
                     <input type="search" placeholder="Product name..." name="keyword" required="">
                     <input type="submit" value=" ">
                 </form>
-            </div>*@
+            </div>
             <!-- price range -->
             <!--<div class="range">
                 <h3 class="agileits-sear-head">Price range</h3>
@@ -276,16 +272,17 @@
             <!-- //cuisine -->
             <!-- deals -->
             <div class="deal-leftmk left-side">
-                <h3 class="agileits-sear-head">Có thể bạn sẽ thích</h3>
-                @foreach (var item in Model.Take(5))
+                <h3 class="agileits-sear-head">Có phải bạn đang tìm kiếm?</h3>
+               
+                @foreach (var item in Model.Take(2))
                 {
-                    <div class="special-sec1">
+                    <div class="special-sec1">  
                         <div class="col-xs-4 img-deals">
-                            <img src="@item.IMAGE_URL" width="60px" alt="">
+                            <img src="@item.IMAGE_URL" width="60px" alt="" >
                         </div>
                         <div class="col-xs-8 img-deal1">
-                            <h3>@item.FOOD_NAME</h3>
-                            <a href="#">@item.PRICE</a>
+                            <h3 >@item.FOOD_NAME</h3>
+                            <a href="@Url.Action("Details", new {id = item.ID})">@item.PRICE</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -300,131 +297,6 @@
         <!-- product right -->
         <div class="agileinfo-ads-display col-md-9">
             <div class="wrapper">
-                <!-- first section (nuts) -->
-                <div class="product-sec1">
-                    <h3 class="heading-tittle">Nuts</h3>
-
-                    @foreach (var item in Model.Where(w => w.CATEGORY_ID == 1))
-                    {
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="@item.IMAGE_URL" width="100px" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="@Url.Action("Details", new {id = item.ID})"> @item.FOOD_NAME</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">@item.PRICE</span>
-                                        <del>$280.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        @Html.ActionLink("your text", "Index", "Cart")
-                                        <a href="@Url.Action("Index","Cart")" name="submit" value="Add to cart" class="button" />
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-
-
-
-                    <
-                    @*         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="images/m2.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Cashew Nuts, 100g</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$200.00</span>
-                                        <del>$420.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
-                                                <input type="hidden" name="amount" value="200.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="images/m3.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Pista..., 250g</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$520.99</span>
-                                        <del>$600.99</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Pista, 250g" />
-                                                <input type="hidden" name="amount" value="520.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>*@
-
-
-                    <div class="clearfix"></div>
-                </div>
-                <!-- //first section (nuts) -->
-                <!-- second section (nuts special) -->
                 <div class="product-sec1 product-sec2">
                     <div class="col-xs-7 effect-bg">
                         <h3 class="">Pure Energy</h3>
@@ -437,263 +309,154 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <!-- first section (nuts) -->
+                <div class="product-sec1">
+                    <h3 class="heading-tittle">Nuts</h3>
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 product-men">
+                            <div class="men-pro-item simpleCart_shelfItem">
+                                <div class="men-thumb-item">
+                                    <img src="@item.IMAGE_URL" width="100px" alt="">
+                                    <div class="men-cart-pro">
+                                        <div class="inner-men-cart-pro">
+                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <span class="product-new-top">New</span>
+                                </div>
+                                <div class="item-info-product ">
+                                    <h4>
+                                        <a href="@Url.Action("Details", new {id = item.ID})"> @item.FOOD_NAME</a>
+                                    </h4>
+                                    <div class="info-product-price">
+                                        <span class="item_price">@item.PRICE</span>
+                                        <del>$280.00</del>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                        <form action="@Url.Action("Create","Cart")" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input name="Quantity  " type="hidden" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="@item.FOOD_NAME" />
+                                                <input type="hidden" name="amount" value="@item.PRICE" />
+                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="currency_code" value="VND" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                    <
+                    @*         <div class="col-md-4 product-men">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item">
+                        <img src="images/m2.jpg" alt="">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                            </div>
+                        </div>
+                        <span class="product-new-top">New</span>
+
+                    </div>
+                    <div class="item-info-product ">
+                        <h4>
+                            <a href="single.html">Cashew Nuts, 100g</a>
+                        </h4>
+                        <div class="info-product-price">
+                            <span class="item_price">$200.00</span>
+                            <del>$420.00</del>
+                        </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart" />
+                                    <input type="hidden" name="add" value="1" />
+                                    <input type="hidden" name="business" value=" " />
+                                    <input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
+                                    <input type="hidden" name="amount" value="200.00" />
+                                    <input type="hidden" name="discount_amount" value="1.00" />
+                                    <input type="hidden" name="currency_code" value="USD" />
+                                    <input type="hidden" name="return" value=" " />
+                                    <input type="hidden" name="cancel_return" value=" " />
+                                    <input type="submit" name="submit" value="Add to cart" class="button" />
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 product-men">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item">
+                        <img src="images/m3.jpg" alt="">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                            </div>
+                        </div>
+                        <span class="product-new-top">New</span>
+
+                    </div>
+                    <div class="item-info-product ">
+                        <h4>
+                            <a href="single.html">Pista..., 250g</a>
+                        </h4>
+                        <div class="info-product-price">
+                            <span class="item_price">$520.99</span>
+                            <del>$600.99</del>
+                        </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <form action="#" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart" />
+                                    <input type="hidden" name="add" value="1" />
+                                    <input type="hidden" name="business" value=" " />
+                                    <input type="hidden" name="item_name" value="Pista, 250g" />
+                                    <input type="hidden" name="amount" value="520.99" />
+                                    <input type="hidden" name="discount_amount" value="1.00" />
+                                    <input type="hidden" name="currency_code" value="USD" />
+                                    <input type="hidden" name="return" value=" " />
+                                    <input type="hidden" name="cancel_return" value=" " />
+                                    <input type="submit" name="submit" value="Add to cart" class="button" />
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+
+
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //first section (nuts) -->
+                <!-- second section (nuts special) -->
                 <!-- //second section (nuts special) -->
                 <!-- third section (oils) -->
-                <div class="product-sec1">
-                    <h3 class="heading-tittle">Oils</h3>
-                    @foreach (var item in Model.Where(w => w.CATEGORY_ID == 2))
-                    {
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="@item.IMAGE_URL" width="100px" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="@Url.Action("Details", new {id = item.ID})"> @item.FOOD_NAME</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">@item.PRICE</span>
-                                        <del>$280.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="@item.FOOD_NAME" />
-                                                <input type="hidden" name="amount" value="@item.PRICE" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @*   <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="images/mk5.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Saffola Gold, 1L</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$130.00</span>
-                                        <del>$150.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Saffola Gold, 1L" />
-                                                <input type="hidden" name="amount" value="130.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="images/mk6.jpg" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="single.html">Fortune Oil, 5L</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">$399.99</span>
-                                        <del>$500.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-                                                <input type="hidden" name="amount" value="399.99" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>*@
-                    <div class="clearfix"></div>
-                </div>
                 <!-- //third section (oils) -->
                 <!-- fourth section (noodles) -->
-                <div class="product-sec1">
-                    <h3 class="heading-tittle">Pasta & Noodles</h3>
-                    @foreach (var item in Model.Where(w => w.CATEGORY_ID == 3))
-                    {
-                        <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="@item.IMAGE_URL" width="100px" alt="">
-                                    <div class="men-cart-pro">
-                                        <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
-                                        </div>
-                                    </div>
-                                    <span class="product-new-top">New</span>
-                                </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="@Url.Action("Details", new {id = item.ID})"> @item.FOOD_NAME</a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        <span class="item_price">@item.PRICE</span>
-                                        <del>$280.00</del>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="@item.FOOD_NAME" />
-                                                <input type="hidden" name="amount" value="@item.PRICE" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                    <div class="clearfix"></div>
-                </div>
                 <!-- //fourth section (noodles) -->
             </div>
         </div>
         <!-- //product right -->
     </div>
 </div>
-<!-- //top products -->
-<!-- special offers -->
-<div class="featured-section" id="projects">
-    <div class="container">
-        <!-- tittle heading -->
-        <h3 class="tittle-w3l">
-            Special Offers
-            <span class="heading-style">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-        </h3>
-        <!-- //tittle heading -->
-        <div class="content-bottom-in">
 
-            <ul id="flexiselDemo1">
-                @foreach (var item in Model)
-                {
-                    <li>
-                        <div class="w3l-specilamk">
-
-                            <div class="speioffer-agile">
-
-                                <a href="single.html">
-                                    <img src="@item.IMAGE_URL" width="100px" alt="">
-                                </a>
-                            </div>
-                            <div class="product-name-w3l">
-                                <h4>
-                                    <a href="@Url.Action("Details", new {id = item.ID})">@item.FOOD_NAME</a>
-                                </h4>
-                                <div class="w3l-pricehkj">
-                                    <h6>@item.PRICE</h6>
-                                    <p>Save $40.00</p>
-                                </div>
-                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="@item.FOOD_NAME" />
-                                            <input type="hidden" name="amount" value="@item.PRICE" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </li>
-
-
-                }
-
-
-
-            </ul>
-            }
-        </div>
-    </div>
-</div>
-<!-- //special offers -->
-<!-- newsletter -->
-
-<!-- //newsletter -->
-
-<!-- footer -->
 <footer>
     <div class="container">
         <!-- footer first section -->
@@ -984,7 +747,7 @@
                     </li>
                 </ul>
             </div>
-        
+
             <!-- payment -->
             <div class="sub-some child-momu">
                 <h5>Payment Method</h5>
@@ -1020,11 +783,10 @@
             </div>
             <!-- //payment -->
         </div>
-  
+
         <!-- //footer fourth section (text) -->
     </div>
 
-   
+
 
 </footer>
-

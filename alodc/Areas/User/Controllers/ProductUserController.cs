@@ -13,7 +13,7 @@ namespace alodc.Areas.User.Controllers
     {
         // GET: User/ProductUser
         
-        QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
+        AD1TEAM1 model = new AD1TEAM1();
         // GET: Admin/ProductAdmin
         public ActionResult Index()
         {
@@ -52,6 +52,20 @@ namespace alodc.Areas.User.Controllers
             return View();
 
 
+        }
+        public ActionResult Search1(string sortOrder, string searchString)
+        {
+
+            var food = model.FOODs.OrderByDescending(x => x.ID).ToList();
+            return View(food);
+        }
+        public ActionResult Search(string keyword, int? page, string SortOrder)
+        {
+            var food = model.FOODs.ToList();
+            food = food.Where(s => s.FOOD_NAME.ToLower().Contains(keyword.ToLower()) || s.CATEGORY.CATEGORY_NAME.ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.keyword = keyword;
+
+            return View("Search1",food);
         }
 
 

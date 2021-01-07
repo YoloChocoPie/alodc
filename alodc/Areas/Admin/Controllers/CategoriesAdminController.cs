@@ -12,7 +12,7 @@ namespace alodc.Areas.Admin.Controllers
     public class CategoriesAdminController : Controller
     {
         // GET: Admin/CategoriesAdmin
-        QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
+        AD1TEAM1 model = new AD1TEAM1();
         // GET: Admin/CategoriesAdmin
         public ActionResult Index()
         {

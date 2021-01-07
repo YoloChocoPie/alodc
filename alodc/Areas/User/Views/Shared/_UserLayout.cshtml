@@ -121,8 +121,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- //header lists -->
                 <!-- search -->
                 <div class="agileits_search">
-                    <form action="#" method="post">
-                        <input name="Search" type="search" placeholder="How can we help you today?" required="">
+                    <form action="@Url.Action("Search","ProductUser")" method="post">
+                        <input name="keyword" type="search" placeholder="How can we help you today?" required="">
                         <button type="submit" class="btn btn-default" aria-label="Left Align">
                             <span class="fa fa-search" aria-hidden="true"> </span>
                         </button>
@@ -130,12 +130,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <!-- //search -->
                 <!-- cart details -->
-                <div class="top_nav_right">
+                @*<div class="top_nav_right">
                     <div class="cart-block">
                         <div class="cart-total">
                             <span class="glyphicon glyphicon-cutlery" style="margin-right:10px">
-                                @((Session["Cart"] as List<ORDER_DETAIL>)?.Count)
-                                @if ((Session["Cart"] as List<ORDER_DETAIL>)?.Count == null)
+                                @((Session["Cart"] as List<MENU>)?.Count)
+                                @if ((Session["Cart"] as List<MENU>)?.Count == null)
                                 {
                                     <output>0</output>
                                 }
@@ -143,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="@Url.Action("Index","Cart")"><i class="glyphicon glyphicon-shopping-cart" style="margin-top:6px"></i></a>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <!-- //cart details -->
                 <div class="clearfix"></div>
             </div>

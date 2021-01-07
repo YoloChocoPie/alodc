@@ -12,16 +12,12 @@ namespace alodc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ORDER_DETAIL
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int ORDER_ID { get; set; }
-        public int QUANTITY { get; set; }
-        public int PRICE { get; set; }
-        public Nullable<int> FOOD_ID { get; set; }
-        public Nullable<bool> STATUS { get; set; }
-    
-        public virtual FOOD FOOD { get; set; }
-        public virtual ORDER ORDER { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

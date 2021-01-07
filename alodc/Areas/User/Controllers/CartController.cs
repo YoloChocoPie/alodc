@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -12,17 +12,17 @@ namespace alodc.Areas.User.Controllers
 {
     public class CartController : Controller
     {
-        private QUANLYCANTEENEntities db = new QUANLYCANTEENEntities();
-        private List<ORDER_DETAIL> Cart = null;
+        private AD1TEAM1 db = new AD1TEAM1();
+        private List<MENU> Cart = null;
 
         public CartController()
         {
             var Session = System.Web.HttpContext.Current.Session;
-            if (Session["Cart"] == null)
-                Cart = Session["Cart"] as List<ORDER_DETAIL>;
+            if (Session["Cart"] != null)
+                Cart = Session["Cart"] as List<MENU>;
             else
             {
-                Cart = new List<ORDER_DETAIL>();
+                Cart = new List<MENU>();
                 Session["Cart"] = Cart;
             }
         }
@@ -33,36 +33,36 @@ namespace alodc.Areas.User.Controllers
             return View(Cart);
         }
 
-       /* // GET: User/Cart/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ORDER_DETAIL oRDER_DETAIL = db.ORDER_DETAIL.Find(id);
-            if (oRDER_DETAIL == null)
-            {
-                return HttpNotFound();
-            }
-            return View(oRDER_DETAIL);
-        }
-*/
+        *//* // GET: User/Cart/Details/5
+         public ActionResult Details(int? id)
+         {
+             if (id == null)
+             {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+             }
+             ORDER_DETAIL oRDER_DETAIL = db.ORDER_DETAIL.Find(id);
+             if (oRDER_DETAIL == null)
+             {
+                 return HttpNotFound();
+             }
+             return View(oRDER_DETAIL);
+         }
+ *//*
         // GET: User/Cart/Create
         [HttpPost]
         public ActionResult Create(int foodId, int quantity)
         {
-            var product = db.MENUs.Find(foodId);
-            Cart.Add(new ORDER_DETAIL
+            var product = db.FOODs.Find(foodId);
+            Cart.Add(new MENU
             {
-                MENU = product,
+                FOOD = product,
                 QUANTITY = quantity
-            }) ;
+            });
             return RedirectToAction("Index");
-   
+
         }
 
-     
+
 
         // GET: User/Cart/Edit/5
         public ActionResult Edit(int? id)
@@ -71,17 +71,17 @@ namespace alodc.Areas.User.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ORDER_DETAIL oRDER_DETAIL = db.ORDER_DETAIL.Find(id);
+            MENU oRDER_DETAIL = db.MENUs.Find(id);
             if (oRDER_DETAIL == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MENU_ID = new SelectList(db.MENUs, "ID", "ID", oRDER_DETAIL.MENU_ID);
-            ViewBag.ORDER_ID = new SelectList(db.ORDERs, "ID", "ORDER_CODE", oRDER_DETAIL.ORDER_ID);
+            ViewBag.MENU_ID = new SelectList(db.MENUs, "ID", "ID", oRDER_DETAIL.FOOD.MENUs);
+            ViewBag.ORDER_ID = new SelectList(db.ORDERs, "ID", "ORDER_CODE", oRDER_DETAIL.ORDER_DETAIL);
             return View(oRDER_DETAIL);
         }
 
-     
+
 
         // GET: User/Cart/Delete/5
         public ActionResult Delete(int? id)
@@ -98,7 +98,7 @@ namespace alodc.Areas.User.Controllers
             return View(oRDER_DETAIL);
         }
 
-      
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -109,3 +109,4 @@ namespace alodc.Areas.User.Controllers
         }
     }
 }
+*/

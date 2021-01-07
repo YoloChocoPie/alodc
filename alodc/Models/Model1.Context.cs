@@ -13,10 +13,10 @@ namespace alodc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QUANLYCANTEENEntities : DbContext
+    public partial class AD1TEAM1 : DbContext
     {
-        public QUANLYCANTEENEntities()
-            : base("name=QUANLYCANTEENEntities")
+        public AD1TEAM1()
+            : base("name=AD1TEAM1")
         {
         }
     
@@ -32,12 +32,10 @@ namespace alodc.Models
         public virtual DbSet<FACULTY> FACULTies { get; set; }
         public virtual DbSet<FOOD> FOODs { get; set; }
         public virtual DbSet<INTRODUCTION> INTRODUCTIONs { get; set; }
-        public virtual DbSet<MENU> MENUs { get; set; }
         public virtual DbSet<NOTIFICATION> NOTIFICATIONs { get; set; }
         public virtual DbSet<ORDER> ORDERs { get; set; }
         public virtual DbSet<ORDER_DETAIL> ORDER_DETAIL { get; set; }
         public virtual DbSet<SLIDER> SLIDERs { get; set; }
-
-       
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

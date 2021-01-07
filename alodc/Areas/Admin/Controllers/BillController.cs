@@ -12,7 +12,7 @@ namespace alodc.Areas.Admin.Controllers
     public class BillController : Controller
     {
         // GET: Admin/Bill
-        QUANLYCANTEENEntities model = new QUANLYCANTEENEntities();
+        AD1TEAM1 model = new AD1TEAM1();
         public ActionResult Index()
         {
             var bill = model.ORDERs.OrderByDescending(x => x.ID).ToList();
