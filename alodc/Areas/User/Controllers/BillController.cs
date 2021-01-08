@@ -53,9 +53,10 @@ namespace alodc.Areas.User.Controllers
                     db.ORDER_DETAIL.Add(new ORDER_DETAIL
                     {
                         ORDER_ID = model.ID,
-                            FOOD_ID = item.FOOD_ID,
+                            FOOD_ID = item.FOOD.ID,
                             PRICE = item.FOOD.PRICE,
-                            QUANTITY = item.QUANTITY
+                            QUANTITY = item.QUANTITY,
+                            
                     }) ;
                 }
                 db.SaveChanges();
