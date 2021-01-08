@@ -1,0 +1,252 @@
+﻿@using alodc.Models
+@model alodc.Models.ORDER
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
+    var Cart = ViewBag.Cart as List<ORDER_DETAIL>;
+    var subtotal = 0;
+    var grandtotal = 0;
+    var shippingcost = 0;
+}
+
+<h2>Create</h2>
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row new-account-login">
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="title-left">
+                    <h3>Account Login</h3>
+                </div>
+                <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Click here to Login</a></h5>
+                
+
+                <form action="@Url.Action("Login")" method="post" class="mt-3 collapse review-form-box" id="formLogin">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Convert.ToBoolean(Session["user-not-found"]) == true)
+                    {
+                        <p style="color : red"> User Email not found </p>
+                    }
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Convert.ToBoolean(Session["password-incorrect"]) == true)
+                    {
+                        <p style="color : red"> User Password not found </p>
+                    }
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+            </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>Billing address</h3>
+                    </div>
+
+                    @using (Html.BeginForm("Create", "Bill", FormMethod.Post, new { @class = "needs-validation" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label for="username">Ngày mua *</label>
+                            <div class="input-group">
+
+                                <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
+
+
+                                @Html.EditorFor(model => model.DATE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DATE, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email Address *</label>
+
+
+
+                            <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address">feedback</label>
+
+
+                            @Html.EditorFor(model => model.FEEDBACK, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FEEDBACK, "", new { @class = "text-danger" })
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="address2">Code</label>
+
+
+                            @Html.EditorFor(model => model.ORDER_CODE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ORDER_CODE, "", new { @class = "text-danger" })
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="country">Cust name</label>
+
+                                @Html.DropDownList("CUSTOMER_ID", new SelectList(ViewBag.customer_id, "ID", "FULL_NAME"))
+                                @Html.ValidationMessageFor(model => model.CUSTOMER_ID, "", new { @class = "text-danger" })
+
+                                <div class="invalid-feedback"> Please select a valid country. </div>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="state">Ac name</label>
+
+                                @Html.DropDownList("ACCOUNT_ID", new SelectList(ViewBag.account_id, "ID", "FULL_NAME"))
+                                @Html.ValidationMessageFor(model => model.ACCOUNT_ID, "", new { @class = "text-danger" })
+
+                                <div class="invalid-feedback"> Please provide a valid state. </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zip">Status</label>
+                                @Html.EditorFor(model => model.STATUS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.STATUS, "", new { @class = "text-danger" })
+                                <div class="invalid-feedback"> Zip code required. </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+
+
+
+                        <hr class="mb-1">
+                    }
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="shipping-method-box">
+                            <div class="title-left">
+                                <h3>Shipping Method</h3>
+                            </div>
+                            <div class="mb-4">
+                                <div class="custom-control custom-radio">
+                                    <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio">
+                                    <label class="custom-control-label" for="shippingOption1">Standard Delivery</label> <span class="float-right font-weight-bold">FREE</span>
+                                </div>
+                                
+                                
+                                <div class="ml-4 mb-2 small">(2-4 business days)</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="odr-box">
+                            <div class="title-left">
+                                <h3>Shopping cart</h3>
+                            </div>
+                            <div class="rounded p-2 bg-light">
+                                @foreach (var item in Cart)
+                                {
+                                    subtotal += item.FOOD.PRICE * item.QUANTITY;
+                                    grandtotal = subtotal + shippingcost;
+                                    <div class="media mb-2 border-bottom">
+                                        <div class="media-body">
+                                            <a href="@Url.Action("Details", "ProductUser", new {id = item.FOOD.ID})"> @item.FOOD.FOOD_NAME </a>
+                                            <div class="small text-muted">Price: @item.PRICE <span class="mx-2">|</span> Qty: @item.QUANTITY <span class="mx-2">|</span> Subtotal: @subtotal.ToString("N0") VNĐ</div>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-lg-12">
+                        <div class="order-box">
+                            <div class="title-left">
+                                <h3>Your order</h3>
+                            </div>
+                            <div class="d-flex">
+                                <div class="font-weight-bold">Product</div>
+                                <div class="ml-auto font-weight-bold">Total</div>
+                            </div>
+                            <hr class="my-1">
+                            <div class="d-flex">
+                                <h4>Sub Total</h4>
+                                <div class="ml-auto font-weight-bold">@subtotal.ToString("N0") VNĐ </div>
+                            </div>
+                            
+                            <hr class="my-1">
+                           
+                            <div class="d-flex">
+                                <h4>Tax</h4>
+                                <div class="ml-auto font-weight-bold"> $ 2 </div>
+                            </div>
+                            <div class="d-flex">
+                                <h4>Shipping Cost</h4>
+                                <div class="ml-auto font-weight-bold"> Free </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex gr-total">
+                                <h5>Grand Total</h5>
+                                <div class="ml-auto h5"> @grandtotal.ToString("N0") VNĐ </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order</a> </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

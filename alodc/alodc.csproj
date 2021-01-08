@@ -179,6 +179,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductAdmin1Controller.cs" />
     <Compile Include="Areas\Admin\Middleware\LoginVerification.cs" />
     <Compile Include="Areas\User\Controllers\AuthController.cs" />
+    <Compile Include="Areas\User\Controllers\BillController.cs" />
     <Compile Include="Areas\User\Controllers\CartController.cs" />
     <Compile Include="Areas\User\Controllers\CheckoutController.cs" />
     <Compile Include="Areas\User\Controllers\ProductUserController.cs" />
@@ -257,6 +258,13 @@
     <Content Include="Areas\User\Views\ProductUser\Faq.cshtml" />
     <Content Include="Areas\User\Views\ProductUser\Details.cshtml" />
     <Content Include="Areas\User\Views\ProductUser\Search1.cshtml" />
+    <Content Include="Areas\User\Views\Cart\Create.cshtml" />
+    <Content Include="Areas\User\Views\Cart\Delete.cshtml" />
+    <Content Include="Areas\User\Views\Cart\Details.cshtml" />
+    <Content Include="Areas\User\Views\Cart\Edit.cshtml" />
+    <Content Include="Areas\User\Views\Cart\Index.cshtml" />
+    <Content Include="Areas\User\Views\Bill\Create.cshtml" />
+    <Content Include="Areas\User\Views\Bill\Index.cshtml" />
     <None Include="Areas\User\Views\Shared\_UserLayout.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
