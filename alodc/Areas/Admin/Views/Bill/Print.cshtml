@@ -57,7 +57,7 @@
                                         total += (orderDetail.QUANTITY * orderDetail.PRICE);
                                         <tr>
                                             <td class="no">@i</td>
-                                            <td class="desc">@orderDetail.MENU.FOOD.FOOD_NAME</td>
+                                            <td class="desc">@orderDetail.FOOD.FOOD_NAME</td>
                                             <td class="unit">@string.Format("{0:#,#.}", orderDetail.PRICE)</td>
                                             <td class="qty">@string.Format("{0:#,#.}", orderDetail.QUANTITY)</td>
                                             <td class="total">@string.Format("{0:#,#.}", (orderDetail.QUANTITY) * orderDetail.PRICE)</td>

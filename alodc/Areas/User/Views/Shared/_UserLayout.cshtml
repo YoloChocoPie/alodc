@@ -1,591 +1,243 @@
-﻿@using alodc.Models;
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="zxx">
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
 
 <head>
-    <title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
-    <!--/tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <!--//tags -->
-    <link href=@Url.Content("~/everything/css/bootstrap.css") rel="stylesheet" type="text/css" media="all" />
-    <link href=@Url.Content("~/everything/css/style.css") rel="stylesheet" type="text/css" media="all" />
-    <link href=@Url.Content("~/everything/css/font-awesome.css") rel="stylesheet">
-    <!--pop-up-box-->
-    <link href=@Url.Content("~/everything/css/popuo-box.css") rel="stylesheet" type="text/css" media="all" />
-    <!--//pop-up-box-->
-    <link href=@Url.Content("~/everything/css/flexslider.css") rel="stylesheet" type="text/css" media="screen"  />
-    <!-- price range -->
-    <link href=@Url.Content("~/everything/css/easy-responsive-tabs.css") rel="stylesheet" />
-    <link href=@Url.Content("~/everything/css/creditly.css") rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href=@Url.Content("~/everything/css/jquery-ui1.css")>
-    <!-- fonts -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=@Url.Content("~/everything/css/bootstrap.min.css")>
+    <!-- Site CSS -->
+    <link rel="stylesheet" href=@Url.Content("~/everything/css/style.css")>
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href=@Url.Content("~/everything/css/responsive.css")>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href=@Url.Content("~/everything/css/custom.css")>
+    <link href=@Url.Content("~/everything/css/bootsnav.css") rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
-    <!-- top-header -->
-    <div class="header-most-top">
-        <p>Website chính thức cho Canteen của Trường Đại Học Văn Lang</p>
-    </div>
-    <!-- //top-header -->
-    <!-- header-bot-->
-    <div class="header-bot">
-        <div class="header-bot_inner_wthreeinfo_header_mid">
-            <!-- header-bot-->
-            <div class="col-md-4 logo_agile">
-                <h1>
-                    <a href="@Url.Action("Index2","ProductUser")">
-                        <span>V</span>LU
-                        <span>C</span>ANTEEN
-
-                        <img src="~/Images/logo.png" width="100px" />
-                    </a>
-                </h1>
-            </div>
-            <!-- header-bot -->
-            <div class="col-md-8 header">
-
-                <div class="card-body">
-                    <ul>
-                        @*                        <li>
-                                <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-                                    <span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#myModal1">
-                                    <span class="fa fa-truck" aria-hidden="true"></span>Track Order
-                                </a>
-                            </li>*@
-                        <li>
-                            <span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
-                        </li>
-
-                        @*      ĐÃ CHỈNH SỬA CHO HỢP LÝ GIAO DIỆN HEADER*@
-
-                        @if (Session["user-fullname"] != null)
-                        {
-                            <li>
-                                <p>Welcome: @Session["user-fullname"].ToString()</p>
-                            <li>
-                                <a href="~/User/Auth/Logout" class="btn btn-warning">Logout</a>
-                            </li>
-
-                            </li>
-
-                        }
-                        else
-
-                        {
-                            <li>
-                                <a href="@Url.Action("Login", "Auth")">
-
-                                    <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="@Url.Action("CreateUserAccount","ProductUser")">
-                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up
-                                </a>
-                            </li>
-
-                        }
-
-                    </ul>
-
-                    <!-- header lists -->
-
-
-
-                </div>
-
-                <!-- //header lists -->
-                <!-- search -->
-                <div class="agileits_search">
-                    <form action="@Url.Action("Search","ProductUser")" method="post">
-                        <input name="keyword" type="search" placeholder="How can we help you today?" required="">
-                        <button type="submit" class="btn btn-default" aria-label="Left Align">
-                            <span class="fa fa-search" aria-hidden="true"> </span>
-                        </button>
-                    </form>
-                </div>
-                <!-- //search -->
-                <!-- cart details -->
-                @*<div class="top_nav_right">
-                    <div class="cart-block">
-                        <div class="cart-total">
-                            <span class="glyphicon glyphicon-cutlery" style="margin-right:10px">
-                                @((Session["Cart"] as List<MENU>)?.Count)
-                                @if ((Session["Cart"] as List<MENU>)?.Count == null)
-                                {
-                                    <output>0</output>
-                                }
-                            </span>
-                            <a href="@Url.Action("Index","Cart")"><i class="glyphicon glyphicon-shopping-cart" style="margin-top:6px"></i></a>
-                        </div>
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="custom-select-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                            <option>¥ JPY</option>
+                            <option>$ USD</option>
+                            <option>€ EUR</option>
+                        </select>
                     </div>
-                </div>*@
-                <!-- //cart details -->
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <!-- shop locator (popup) -->
-    <!-- Button trigger modal(shop-locator) -->
-    @*
-            <!-- //shop locator (popup) -->
-            <!-- signin Model -->
-            <!-- Modal1 -->
-            <!--<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <!--<div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body modal-body-sub_agile">
-                            <div class="main-mailposi">
-                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
-                            </div>
-                            <div class="modal_body_left modal_body_left1">
-                                <h3 class="agileinfo_sign">Sign In </h3>-->
-        @*						<p>
-                                    Sign In now, Let's start your Grocery Shopping. Don't have an account?
-                                    <a href="#" >
-                                        Sign Up Now
-                                    </a>
-                                </p>*@
-    @*						<form action="@Url.Action("Login","Account")" method="post">
-            <div class="styled-input agile-styled-input-top">
-                <input type="text" placeholder="User Name" name="Name" required="">
-            </div>
-            <div class="styled-input">
-                <input type="password" placeholder="Password" name="password" required="">
-            </div>
-            <input type="submit" value="Sign In">
-        </form>*@
-    <div class="clearfix"></div>
-    </div>
-    <div class="clearfix"></div>
-    </div>
-    </div>
-    <!-- //Modal content-->
-    <!--</div>
-    </div>-->
-    <!-- //Modal1 -->
-    <!-- //signin Model -->
-    <!-- signup Model -->
-    <!-- Modal2 -->
-    <!--<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-    <!--<div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <!--<div class="modal-body modal-body-sub_agile">
-            <div class="main-mailposi">
-                <span class="fa fa-envelope-o" aria-hidden="true"></span>
-            </div>
-            <div class="modal_body_left modal_body_left1">
-                <h3 class="agileinfo_sign">Sign Up</h3>
-                <p>
-                    Come join the Grocery Shoppy! Let's set up your Account.
-                </p>-->
-    <!---->
-    <!---->@*						<form action="#" method="post">
-            <div class="styled-input agile-styled-input-top">
-                <input type="text" placeholder="Name" name="Name" required="">
-            </div>
-            <div class="styled-input">
-                <input type="email" placeholder="E-mail" name="Email" required="">
-            </div>
-            <div class="styled-input">
-                <input type="password" placeholder="Password" name="password" id="password1" required="">
-            </div>
-            <div class="styled-input">
-                <input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
-            </div>
-            <input type="submit" value="Sign Up">
-        </form>*@
-    <!--<p>
-                <a href="#">By clicking register, I agree to your terms</a>
-            </p>
-        </div>
-    </div>-->
-    <!--</div>-->
-    <!-- //Modal content-->
-    <!--</div>
-    </div>-->
-    <!-- //Modal2 -->
-    <!-- //signup Model -->
-    <!-- //header-bot -->
-    <!-- navigation -->
-    <div class="ban-top">
-        <div class="container">
-            <div class="agileits-navi_search">
-                <form action="#" method="post">
-                    <select id="agileinfo-nav_search" name="agileinfo_search" required="">
-                        <option value="">VLU CANTEEN</option>
-
-                    </select>
-                </form>
-            </div>
-            <div class="top_nav_left">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                                    aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav menu__list">
-                                <li class="active">
-                                    <a class="nav-stylehead" href="@Url.Action("Index2","ProductUser")">
-                                        Home
-                                        <span class="sr-only">(current)</span>
-                                    </a>
+                    <div class="right-phone-box">
+                        <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                    </div>
+                    <div class="our-link">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
                                 </li>
-                                <li class="">
-                                    <a class="nav-stylehead" href="@Url.Action("About","ProductUser")">About Us</a>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
                                 </li>
-                                @*	<li class="dropdown">
-                                        <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            Kitchen
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu multi-column columns-3">
-                                            <div class="agile_inner_drop_nav_info">
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product.html">Bakery</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Baking Supplies</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Coffee, Tea & Beverages</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Dried Fruits, Nuts</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Sweets, Chocolate</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Spices & Masalas</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Jams, Honey & Spreads</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product.html">Pickles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Pasta & Noodles</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Rice, Flour & Pulses</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Sauces & Cooking Pastes</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Snack Foods</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Oils, Vinegars</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product.html">Meat, Poultry & Seafood</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-4 multi-gd-img">
-                                                    <img src="images/nav.png" alt="">
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </ul>
-                                    </li>*@
-                                @*	<li class="dropdown">
-                                        <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            Household
-                                            <span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu multi-column columns-3">
-                                            <div class="agile_inner_drop_nav_info">
-                                                <div class="col-sm-6 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product2.html">Kitchen & Dining</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Detergents</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Utensil Cleaners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Floor & Other Cleaners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Disposables, Garbage Bag</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Repellents & Fresheners</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html"> Dishwash</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6 multi-gd-img">
-                                                    <ul class="multi-column-dropdown">
-                                                        <li>
-                                                            <a href="product2.html">Pet Care</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Cleaning Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Pooja Needs</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Crackers</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Festive Decoratives</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Plasticware</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product2.html">Home Care</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </ul>
-                                    </li>*@
-                                <li class="">
-                                    <a class="nav-stylehead" href="@Url.Action("Faq","ProductUser")">Faqs</a>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
                                 </li>
-                                @*	<li class="dropdown">
-                                        <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">
-                                            Pages
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu agile_short_dropdown">
-                                            <li>
-                                                <a href="icons.html">Web Icons</a>
-                                            </li>
-                                            <li>
-                                                <a href="typography.html">Typography</a>
-                                            </li>
-                                        </ul>
-                                    </li>*@
-
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
                             </ul>
                         </div>
                     </div>
-                </nav>
+
+
+                    <div class="our-link">
+                        <ul>
+                            @if (Session["user-fullname"] != null)
+                            {
+                                <li><a><i class="fa fa-user s_color"></i>Name: @Session["user-fullname"].ToString()</a></li>
+                                <li><a href="~/User/Auth/Logout" class="btn btn-warning">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("Login","Auth")"><i class="fa fa-user s_color"></i>Sign In</a></li>
+                                <li><a href="@Url.Action("CreateUserAccount","ProductUser")"><i class="fa fa-user s_color"></i>Register Here</a></li>
+                            }
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" width="100px" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">Sidebar Shop</a></li>
+                                <li><a href="shop-detail.html">Shop Detail</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li class="side-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                                <p>My Cart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+
+            <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <form action="@Url.Action("Search","ProductUser")" method="post">
+                    <input class="form-control" placeholder="Search here..." type="text" name="keyword">
+                    <button type="submit"> <i class="fa fa-search"></i> </button>
+                </form>
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+   
+
+
 
 
     @RenderBody()
-    <!-- //footer -->
-    <!-- //copyright -->
-    <!-- js-files -->
-    <!-- jquery -->
-    <script src=@Url.Content("~/everything/js/jquery-2.1.4.min.js")></script>
-    <!-- //jquery -->
-    <!-- popup modal (for signin & signup)-->
-    <script src=@Url.Content("~/everything/js/jquery.magnific-popup.js")></script>
-    <script>
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-                fixedContentPos: false,
-                fixedBgPos: true,
-                overflowY: 'auto',
-                closeBtnInside: true,
-                preloader: false,
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
 
-        });
-    </script>
-    <!-- Large modal -->
-    <!-- <script>
-        $('#').modal('show');
-    </script> -->
-    <!-- //popup modal (for signin & signup)-->
-    <!-- cart-js -->
-    <script src=@Url.Content("~/everything/js/minicart.js")></script>
-    <script>
-        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-        paypalm.minicartk.cart.on('checkout', function (evt) {
-            var items = this.items(),
-                len = items.length,
-                total = 0,
-                i;
-
-            // Count the number of each item in the cart
-            for (i = 0; i < len; i++) {
-                total += items[i].get('quantity');
-            }
-
-            if (total < 1) {
-                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-                evt.preventDefault();
-            }
-        });
-    </script>
-    <!-- //cart-js -->
-    <!-- price range (top products) -->
-    <script src=@Url.Content("~/everything/js/jquery-ui.js")></script>
-    <script>
-        //<![CDATA[
-        $(window).load(function () {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 9000,
-                values: [50, 6000],
-                slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                }
-            });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-
-        }); //]]>
-    </script>
-    <!-- //price range (top products) -->
-    <!-- flexisel (for special offers) -->
-    <script src=@Url.Content("~/everything/js/jquery.flexisel.js")></script>
-    <script>
-        $(window).load(function () {
-            $("#flexiselDemo1").flexisel({
-                visibleItems: 3,
-                animationSpeed: 1000,
-                autoPlay: true,
-                autoPlaySpeed: 3000,
-                pauseOnHover: true,
-                enableResponsiveBreakpoints: true,
-                responsiveBreakpoints: {
-                    portrait: {
-                        changePoint: 480,
-                        visibleItems: 1
-                    },
-                    landscape: {
-                        changePoint: 640,
-                        visibleItems: 2
-                    },
-                    tablet: {
-                        changePoint: 768,
-                        visibleItems: 2
-                    }
-                }
-            });
-
-        });
-    </script>
-    <!-- //flexisel (for special offers) -->
-    <!-- smoothscroll -->
-    <script src=@Url.Content("~/everything/js/SmoothScroll.min.js")></script>
-    <!-- //smoothscroll -->
-    <!-- start-smooth-scrolling -->
-    <script src=@Url.Content("~/everything/js/move-top.js")></script>
-    <script src=@Url.Content("~/everything/js/easing.js")></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 1000);
-            });
-        });
-    </script>
-    <!-- //end-smooth-scrolling -->
-    <!-- smooth-scrolling-of-move-up -->
-    <script>
-        $(document).ready(function () {
-            /*
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            */
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //smooth-scrolling-of-move-up -->
-    <!-- for bootstrap working -->
-    <script src=@Url.Content("~/everything/js/bootstrap.js")></script>
-    <!-- //for bootstrap working -->
-    <!-- //js-files -->
-    <script src=@Url.Content("~/everything/js/imagezoom.js")></script>
-    <script src=@Url.Content("~/everything/js/jquery.flexslider.js")></script>
-    <script>
-        // Can also be used with $(document).ready()
-        $(window).load(function () {
-            $('.flexslider').flexslider({
-                animation: "slide",
-                controlNav: "thumbnails"
-            });
-        });
-    </script>
-
-
-    <script src=@Url.Content("~/everything/js/creditly.js")></script>
-    <script src=@Url.Content("~/everything/js/easyResponsiveTabs.js")></script>
-    @RenderSection("scripts", required: false)
+    <!-- ALL JS FILES -->
+    <script src=@Url.Content("~/everything/js/jquery-3.2.1.min.js")></script>
+    <script src=@Url.Content("~/everything/js/popper.min.js")></script>
+    <script src=@Url.Content("~/everything/js/bootstrap.min.js")></script>
+    <!-- ALL PLUGINS -->
+    <script src=@Url.Content("~/everything/js/jquery.superslides.min.js")></script>
+    <script src=@Url.Content("~/everything/js/bootstrap-select.js")></script>
+    <script src=@Url.Content("~/everything/js/inewsticker.js")></script>
+    <script src=@Url.Content("~/everything/js/bootsnav.js")></script>
+    <script src=@Url.Content("~/everything/js/images-loded.min.js")></script>
+    <script src=@Url.Content("~/everything/js/isotope.min.js")></script>
+    <script src=@Url.Content("~/everything/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("~/everything/js/baguetteBox.min.js")></script>
+    <script src=@Url.Content("~/everything/js/form-validator.min.js")></script>
+    <script src=@Url.Content("~/everything/js/contact-form-script.js")></script>
+    <script src=@Url.Content("~/everything/js/custom.js")></script>
 </body>
 
 </html>

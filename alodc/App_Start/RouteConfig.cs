@@ -13,11 +13,11 @@ namespace alodc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*  routes.MapRoute(
-                  name: "Default",
-                  url: "{controller}/{action}/{id}",
-                  defaults: new { controller = "ProductUser", action = "Index2", id = UrlParameter.Optional }
-              );*/
+            /*routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "ProductUser", action = "Index2", id = UrlParameter.Optional }
+            );*/
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
@@ -33,7 +33,7 @@ namespace alodc
                 new[] { "alodc.Areas.CategoriesAdmin.Controllers" }
             ).DataTokens.Add("area", "Admin");*/
 
-            routes.MapRoute(
+            /*routes.MapRoute(
                name: "Admin", // Route name
                url: "{controller}/{action}/{id}", // URL with parameters
                defaults: new
@@ -47,7 +47,7 @@ namespace alodc
                    "alodc.Controllers"
                }
 
-               );
+               );*/
 
 
         }
