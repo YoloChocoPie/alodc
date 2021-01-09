@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Trang quản trị hoá đơn</title>
 
 
 
@@ -16,14 +16,14 @@
 
 
     <!--THIS IS THE CSS FILE YOU WILL NEED -->
-    <link rel="stylesheet" type="text/css" href="~/test datatable/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/test datatable/css/dataTables.bootstrap.css")">
 
 
 </head>
 <body>
 
 
-    <h2>Manage Bill</h2>
+    <h2>Quản lý hoá đơn</h2>
 
 
     @*<table class="table">*@
@@ -103,14 +103,14 @@
         <!-- /.card-body -->
         <div class="card-footer clearfix">
 
-            <a href="/Admin/Bill/Create" class="btn btn-sm btn-info float-left">Place New Order</a>
+            <a href="@Url.Action("Create","Bill")" class="btn btn-sm btn-info float-left">Thêm hoá đơn </a>
 
         </div>
         <!-- /.card-footer -->
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
 </body>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -120,7 +120,7 @@
 
 
 <!-- EVERYTHING BELOW THIS YOU WILL NEED -->
-<script type="text/javascript" language="javascript" src="~/test datatable/js/jquery.dataTables.js">
+<script type="text/javascript" language="javascript" src="@Url.Content("~/test datatable/js/jquery.dataTables.js")">
 </script>
 
 

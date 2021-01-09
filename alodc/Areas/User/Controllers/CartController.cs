@@ -8,9 +8,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using alodc.Models;
+using WebCanteen.Areas.User.Middleware;
 
 namespace alodc.Areas.User.Controllers
 {
+    [LoginVerification]
     public class CartController : Controller
     {
         private AD1TEAM1 db = new AD1TEAM1();

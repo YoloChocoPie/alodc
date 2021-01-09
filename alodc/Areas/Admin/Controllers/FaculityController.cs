@@ -1,23 +1,23 @@
-﻿using alodc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using alodc.Models;
 using WebCanteen.Areas.Admin.Middleware;
 
 namespace alodc.Areas.Admin.Controllers
 {
     [LoginVerification]
-    public class CategoriesAdminController : Controller
+    public class FaculityController : Controller
     {
-        // GET: Admin/CategoriesAdmin
+        // GET: Admin/Faculity
         AD1TEAM1 model = new AD1TEAM1();
         // GET: Admin/CategoriesAdmin
         public ActionResult Index()
         {
-            var categorye = model.CATEGORies.OrderByDescending(x => x.ID).ToList();
-            return View(categorye);
+            var fac = model.FACULTies.OrderByDescending(x => x.ID).ToList();
+            return View(fac);
         }
 
 
@@ -28,62 +28,62 @@ namespace alodc.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CATEGORY c)
+        public ActionResult Create(FACULTY c)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                var category = new CATEGORY();
-                category.CATEGORY_CODE = c.CATEGORY_CODE;
-                category.CATEGORY_NAME = c.CATEGORY_NAME;
-                category.IMAGE_URL = c.IMAGE_URL;
-                category.STATUS = c.STATUS;
+                var fac = new FACULTY();
+                fac.FACULTY_CODE = c.FACULTY_CODE;
+                fac.FACULTY_NAME = c.FACULTY_NAME;
+             
+                fac.STATUS = c.STATUS;
 
-                model.CATEGORies.Add(category);
+                model.FACULTies.Add(fac);
                 model.SaveChanges();
 
                 Session["Success"] = true;
                 return RedirectToAction("Index");
             }
             return View();
-                
+
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
-            return View(category);
+            var fac = model.FACULTies.FirstOrDefault(x => x.ID == id);
+            return View(fac);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CATEGORY c)
+        public ActionResult Edit(int id, FACULTY c)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
-                var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
-                category.CATEGORY_CODE = c.CATEGORY_CODE;
-                category.CATEGORY_NAME = c.CATEGORY_NAME;
-                category.IMAGE_URL = c.IMAGE_URL;
-                category.STATUS = c.STATUS;
+                var fac = model.FACULTies.FirstOrDefault(x => x.ID == id);
+                fac.FACULTY_CODE = c.FACULTY_CODE;
+                fac.FACULTY_NAME = c.FACULTY_NAME;
+
+                fac.STATUS = c.STATUS;
                 model.SaveChanges();
 
                 Session["Success"] = true;
                 return RedirectToAction("Index");
             }
             return View();
-                
+
         }
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
-            return View(category);
+            var fac = model.FACULTies.FirstOrDefault(x => x.ID == id);
+            return View(fac);
         }
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult ComfirmDelete(int id)
         {
-            var category = model.CATEGORies.FirstOrDefault(x => x.ID == id);
-            model.CATEGORies.Remove(category);
+            var fac = model.FACULTies.FirstOrDefault(x => x.ID == id);
+            model.FACULTies.Remove(fac);
             model.SaveChanges();
             return RedirectToAction("Index");
         }
